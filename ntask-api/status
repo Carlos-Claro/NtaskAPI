@@ -1,0 +1,16 @@
+
+> ntask-api@1.0.0 start /home/carlos/Estudos/REST/livros/nodejs/ntask-api
+> babel-node index.js
+
+consign v0.1.2 Initialized in /home/carlos/Estudos/REST/livros/nodejs/ntask-api
++ ./libs/config.js
++ ./db.js
++ ./auth.js
++ ./libs/middlewares.js
++ ./routes/imoveis.js
++ ./routes/index.js
++ ./routes/rasp.js
++ ./routes/tasks.js
++ ./routes/token.js
++ ./routes/users.js
++ ./libs/boot.js

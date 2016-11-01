@@ -1,0 +1,229 @@
+[
+  {
+    "type": "post",
+    "url": "/token",
+    "title": "Token autenticado",
+    "group": "Credencial",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Email de usuário</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>Senha de usuário</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Entrada",
+          "content": "\n{\n\n\"email\": \"john@connor.net\",\n\n\"password\": \"123456\"\n\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>Token de usuário autenticado</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Sucesso",
+          "content": "\nHTTP/1.1 200 OK\n\n{\"token\": \"xyz.abc.123.hgf\"}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Erro de autenticação",
+          "content": "\nHTTP/1.1 401 Unauthorized",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "routes/token.js",
+    "groupTitle": "Credencial",
+    "name": "PostToken"
+  },
+  {
+    "type": "get",
+    "url": "/",
+    "title": "API status",
+    "group": "Status",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p>mensagem de status da API</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Sucesso",
+          "content": "HTTP/1.1 200 OK\n{\"status\": \"Ntask API\"}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "routes/index.js",
+    "groupTitle": "Status",
+    "name": "Get"
+  },
+  {
+    "type": "delete",
+    "url": "/user",
+    "title": "Exclui usuário autenticado",
+    "group": "Usu_rio",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Token de usuário</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header",
+          "content": "{\"Authorization\": \"JWT xyz.abc.123.hgf\"}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Sucesso",
+          "content": "HTTP/1.1 204 No Content",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Erro na exclusão",
+          "content": "HTTP/1.1 412 Precondition Failed",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "routes/users.js",
+    "groupTitle": "Usu_rio",
+    "name": "DeleteUser"
+  },
+  {
+    "type": "get",
+    "url": "/user",
+    "title": "Exibe usuário autenticado",
+    "group": "Usu_rio",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Token de usuário</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header",
+          "content": "\n{\"Authorization\": \"JWT xyz.abc.123.hgf\"}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Id de registro</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Nome</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Email</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Sucesso",
+          "content": "\nHTTP/1.1 200 OK\n\n{\n\n\"id\": 1,\n\n\"name\": \"John Connor\",\n\n\"email\": \"john@connor.net\"\n\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Erro de consulta",
+          "content": "\nHTTP/1.1 412 Precondition Failed",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "routes/users.js",
+    "groupTitle": "Usu_rio",
+    "name": "GetUser"
+  },
+  {
+    "type": "method",
+    "url": "path",
+    "title": "[title]",
+    "version": "0.0.0",
+    "filename": "routes/users.js",
+    "group": "_home_carlos_Estudos_REST_livros_nodejs_ntask_api_routes_users_js",
+    "groupTitle": "_home_carlos_Estudos_REST_livros_nodejs_ntask_api_routes_users_js",
+    "name": "MethodPath"
+  }
+]
