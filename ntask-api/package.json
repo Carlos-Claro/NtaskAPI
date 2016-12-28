@@ -34,6 +34,7 @@
     "mongodb": "^2.2.10",
     "mongoose": "^4.6.0",
     "morgan": "^1.6.1",
+    "neo4j": "^2.0.0-RC2",
     "os": "^0.1.1",
     "passport": "^0.3.2",
     "passport-jwt": "^2.0.0",

@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import Sequelize from "sequelize";
 import mongodb from "mongodb";
+import neo4j from "neo4j";
 let db = null;
 
 module.exports = app => {
@@ -25,7 +26,7 @@ module.exports = app => {
 			if (err) return console.log(err)
 				db.mongo = database
 		})	
-		
+		db.neo4j = new neo4j.GraphDatabase(config.neo4j);
 		const dir = path.join(__dirname,"models/sequelize");
 		fs.readdirSync(dir).forEach(file => {
 			const modelDir = path.join(dir,file);

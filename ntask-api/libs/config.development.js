@@ -17,4 +17,5 @@ module.exports = {
 	jwtSecret: "Nta$K-AP1",
 	jwtSession: {session:false},
 	mongo: 'mongodb://localhost:27017/imoveis',
+	neo4j: 'http://neo4j:c2a0r1l2@192.168.3.105:7474',
 };

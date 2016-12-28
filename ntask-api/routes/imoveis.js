@@ -20,31 +20,28 @@ module.exports = app => {
 		app.route("/imoveis/itens")
 		//.all(app.auth.authenticate())
 		.get((req,res) => {
-				console.log('get',req.body);
-
+			console.log('get',req.body);
+			if ( ! req.body.longitude )
+			{
+				req.body.longitude = 0;
+				req.body.latitude = 0;
+			}
 			var body = {
-	 					"imoveis_tipos_link":"apartamento", 
-	 					"id_cidade":"1",
-	 					"latitude": {$lt : 0},
-	 					"location":{$near:[-49.179251,-25.547125]}
+	 					//"latitude": {$lt : 0},
+	 					"location":{$geoWithin:{ $center:[[req.body.longitude,req.body.latitude],200/3963.2]}}//600/3963.2
 		 				};
 			var offset, limit;
-			var limit = 20
+			var limit = 2
 			const imoveis = app.db.mongo.collection('imoveis');
 			
-			imoveis.count(body).then((count) => {
 			
-					imoveis.find(body).limit(limit).sort({"ordem":-1}).toArray((err,itens) => {
-			
-							var retorno = {};
-							retorno.qtde = count;
-							retorno.itens = itens;
-							res.json(retorno);	
+					imoveis.find(body).limit(limit).toArray((err,itens) => {
+							console.log(err,itens);
+							res.json(itens);	
 							
 					});
 
 			 					
-			});
 		}).post((req,res) => {
 			console.log('post itens',req.body);
 	 					// "id_cidade":"1",

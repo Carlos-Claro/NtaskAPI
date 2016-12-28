@@ -596,133 +596,133 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var App = function () {
-  function App(body, footer) {
-    _classCallCheck(this, App);
+	function App(body, footer) {
+		_classCallCheck(this, App);
 
-    this.signin = new _signin2.default(body);
-    this.signup = new _signup2.default(body);
-    this.tasks = new _tasks2.default(body);
-    this.taskForm = new _taskForm2.default(body);
-    this.user = new _user2.default(body);
-    this.menu = new _menu2.default(footer);
-  }
+		this.signin = new _signin2.default(body);
+		this.signup = new _signup2.default(body);
+		this.tasks = new _tasks2.default(body);
+		this.taskForm = new _taskForm2.default(body);
+		this.user = new _user2.default(body);
+		this.menu = new _menu2.default(footer);
+	}
 
-  _createClass(App, [{
-    key: "init",
-    value: function init() {
-      this.signin.render();
-      this.addEventListener();
-    }
-  }, {
-    key: "addEventListener",
-    value: function addEventListener() {
-      this.signinEvents();
-      this.signupEvents();
-      this.tasksEvents();
-      this.taskFormEvents();
-      this.userEvents();
-      this.menuEvents();
-    }
-  }, {
-    key: "signinEvents",
-    value: function signinEvents() {
-      var _this = this;
+	_createClass(App, [{
+		key: "init",
+		value: function init() {
+			this.signin.render();
+			this.addEventListener();
+		}
+	}, {
+		key: "addEventListener",
+		value: function addEventListener() {
+			this.signinEvents();
+			this.signupEvents();
+			this.tasksEvents();
+			this.taskFormEvents();
+			this.userEvents();
+			this.menuEvents();
+		}
+	}, {
+		key: "signinEvents",
+		value: function signinEvents() {
+			var _this = this;
 
-      this.signin.on("error", function () {
-        return alert("Erro de autenticação");
-      });
-      this.signin.on("signin", function (token) {
-        localStorage.setItem("token", "JWT " + token);
-        _this.menu.render("tasks");
-        _this.tasks.render();
-      });
-      this.signin.on("signup", function () {
-        return _this.signup.render();
-      });
-    }
-  }, {
-    key: "signupEvents",
-    value: function signupEvents() {
-      var _this2 = this;
+			this.signin.on("error", function () {
+				return alert("Erro de autenticação");
+			});
+			this.signin.on("signin", function (token) {
+				localStorage.setItem("token", "JWT " + token);
+				_this.menu.render("tasks");
+				_this.tasks.render();
+			});
+			this.signin.on("signup", function () {
+				return _this.signup.render();
+			});
+		}
+	}, {
+		key: "signupEvents",
+		value: function signupEvents() {
+			var _this2 = this;
 
-      this.signup.on("error", function () {
-        return alert("Erro no cadastro");
-      });
-      this.signup.on("signup", function (user) {
-        alert(user.name + " você foi cadastrado com sucesso!");
-        _this2.signin.render();
-      });
-    }
-  }, {
-    key: "tasksEvents",
-    value: function tasksEvents() {
-      var _this3 = this;
+			this.signup.on("error", function () {
+				return alert("Erro no cadastro");
+			});
+			this.signup.on("signup", function (user) {
+				alert(user.name + " você foi cadastrado com sucesso!");
+				_this2.signin.render();
+			});
+		}
+	}, {
+		key: "tasksEvents",
+		value: function tasksEvents() {
+			var _this3 = this;
 
-      this.tasks.on("error", function () {
-        return alert("Erro ao listar tarefas");
-      });
-      this.tasks.on("remove-error", function () {
-        return alert("Erro ao excluir");
-      });
-      this.tasks.on("update-error", function () {
-        return alert("Erro ao atualizar");
-      });
-      this.tasks.on("remove", function () {
-        return _this3.tasks.render();
-      });
-      this.tasks.on("update", function () {
-        return _this3.tasks.render();
-      });
-    }
-  }, {
-    key: "taskFormEvents",
-    value: function taskFormEvents() {
-      var _this4 = this;
+			this.tasks.on("error", function () {
+				return alert("Erro ao listar tarefas");
+			});
+			this.tasks.on("remove-error", function () {
+				return alert("Erro ao excluir");
+			});
+			this.tasks.on("update-error", function () {
+				return alert("Erro ao atualizar");
+			});
+			this.tasks.on("remove", function () {
+				return _this3.tasks.render();
+			});
+			this.tasks.on("update", function () {
+				return _this3.tasks.render();
+			});
+		}
+	}, {
+		key: "taskFormEvents",
+		value: function taskFormEvents() {
+			var _this4 = this;
 
-      this.taskForm.on("error", function () {
-        return alert("Erro ao cadastrar tarefa");
-      });
-      this.taskForm.on("submit", function () {
-        _this4.menu.render("tasks");
-        _this4.tasks.render();
-      });
-    }
-  }, {
-    key: "userEvents",
-    value: function userEvents() {
-      var _this5 = this;
+			this.taskForm.on("error", function () {
+				return alert("Erro ao cadastrar tarefa");
+			});
+			this.taskForm.on("submit", function () {
+				_this4.menu.render("tasks");
+				_this4.tasks.render();
+			});
+		}
+	}, {
+		key: "userEvents",
+		value: function userEvents() {
+			var _this5 = this;
 
-      this.user.on("error", function () {
-        return alert("Erro carregar usuário");
-      });
-      this.user.on("remove-error", function () {
-        return alert("Erro ao excluir conta");
-      });
-      this.user.on("remove-account", function () {
-        alert("Que pena! Sua conta foi excluída.");
-        localStorage.clear();
-        _this5.menu.clear();
-        _this5.signin.render();
-      });
-    }
-  }, {
-    key: "menuEvents",
-    value: function menuEvents() {
-      var _this6 = this;
+			this.user.on("error", function () {
+				return alert("Erro carregar usuário");
+			});
+			this.user.on("remove-error", function () {
+				return alert("Erro ao excluir conta");
+			});
+			this.user.on("remove-account", function () {
+				alert("Que pena! Sua conta foi excluída.");
+				localStorage.clear();
+				_this5.menu.clear();
+				_this5.signin.render();
+			});
+		}
+	}, {
+		key: "menuEvents",
+		value: function menuEvents() {
+			var _this6 = this;
 
-      this.menu.on("click", function (path) {
-        _this6.menu.render(path);
-        _this6[path].render();
-      });
-      this.menu.on("logout", function () {
-        localStorage.clear();
-        _this6.menu.clear();
-        _this6.signin.render();
-      });
-    }
-  }]);
+			this.menu.on("click", function (path) {
+				_this6.menu.render(path);
+				_this6[path].render();
+			});
+			this.menu.on("logout", function () {
+				localStorage.clear();
+				_this6.menu.clear();
+				_this6.signin.render();
+			});
+		}
+	}]);
 
-  return App;
+	return App;
 }();
 
 module.exports = App;
