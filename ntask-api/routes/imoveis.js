@@ -23,8 +23,8 @@ module.exports = app => {
 			console.log('get',req.body);
 			if ( ! req.body.longitude )
 			{
-				req.body.longitude = 0;
-				req.body.latitude = 0;
+				req.body.longitude = -49.1960870;
+				req.body.latitude = -25.538556;
 			}
 			var body = {
 	 					//"latitude": {$lt : 0},
